@@ -20,12 +20,13 @@
           focus:ring-1
         "
         placeholder="Ürün adını giriniz."
+        v-model="product.title"
       />
     </label>
     <label class="flex flex-col">
       <span class="text-md m-4 font-medium">Adet</span>
       <input
-        type="text"
+        type="number"
         name="count"
         class="
           m-auto
@@ -40,12 +41,13 @@
           focus:ring-1
         "
         placeholder="Ürün adetini giriniz."
+        v-model="product.count"
       />
     </label>
     <label class="flex flex-col">
       <span class="text-md m-4 font-medium">Fiyat</span>
       <input
-        type="text"
+        type="number"
         name="name"
         class="
           m-auto
@@ -60,6 +62,7 @@
           focus:ring-1
         "
         placeholder="Ürün fiyatı giriniz."
+        v-model="product.price"
       />
     </label>
     <label class="flex flex-col">
@@ -78,6 +81,7 @@
           focus:ring-1
         "
         placeholder="Ürüne ait bir açıklama giriniz."
+        v-model="product.description"
       ></textarea>
     </label>
     <div class="flex justify-start mt-3 ml-4 mb-4">
@@ -91,6 +95,7 @@
           px-6
           rounded
         "
+        @click="saveProduct"
       >
         Kaydet
       </button>
@@ -100,5 +105,20 @@
 <script>
 export default {
   name: "appUrunIslemleri",
+  data() {
+    return {
+      product: {
+        title: "",
+        count: null,
+        price: null,
+        description: "",
+      },
+    };
+  },
+  methods: {
+    saveProduct() {
+      this.$store.dispatch("saveProduct", this.product);
+    },
+  },
 };
 </script>
