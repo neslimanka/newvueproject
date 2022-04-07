@@ -9,6 +9,11 @@ Vue.use(VueRouter)
 
 const routes = [
   {
+    path: '/',
+    name: 'urun-listesi',
+    component: appUrunListesi
+  },
+  {
     path: '/urun-listesi',
     name: 'urun-listesi',
     component: appUrunListesi

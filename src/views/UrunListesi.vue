@@ -29,25 +29,18 @@
               </th>
             </tr>
           </thead>
-          <tbody>
+          <tbody v-for="item in getTradeResult" :key="item.key">
             <tr class="border-b bg-gray-100">
               <th
                 scope="row"
-                class="
-                  px-6
-                  py-4
-                  font-medium
-                  text-gray-900
-                  dark:text-white
-                  whitespace-nowrap
-                "
+                class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap"
               >
-                Apple MacBook Pro 17"
+                {{ item.key }}
               </th>
-              <td class="px-6 py-4">Sliver</td>
-              <td class="px-6 py-4 bg-green-400">Laptop</td>
-              <td class="px-6 py-4">$2999</td>
-              <td class="px-6 py-4">$2999</td>
+              <td class="px-6 py-4">{{ item.title }}</td>
+              <td class="px-6 py-4 bg-green-400">{{ item.count }}</td>
+              <td class="px-6 py-4">{{ item.price }}</td>
+              <td class="px-6 py-4">{{ item.description }}</td>
             </tr>
           </tbody>
         </table>
@@ -56,7 +49,15 @@
   </div>
 </template>
 <script>
+import { mapGetters } from "vuex";
+
 export default {
   name: "appUrunListesi",
+  created() {
+    this.$store.dispatch("setTradeResult");
+  },
+  computed: {
+    ...mapGetters(["getTradeResult"]),
+  },
 };
 </script>
