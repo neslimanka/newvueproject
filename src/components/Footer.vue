@@ -5,19 +5,19 @@
         <span class="mx-4"
           >Alış Tutarı:
           <h2 class="bg-red-700 rounded-md">
-            {{ getTradeResult.purchase }} TL
+            {{ getTradeResult.purchase | currency }}
           </h2></span
         >
         <span class="mx-4"
           >Satış Tutarı:
           <h2 class="bg-yellow-400 rounded-md">
-            {{ getTradeResult.sale }} TL
+            {{ getTradeResult.sale | currency }}
           </h2></span
         >
         <span class="mx-4"
           >Bakiye:
           <h2 class="bg-blue-600 rounded-md">
-            {{ getTradeResult.balance }} TL
+            {{ getTradeResult.balance | currency }}
           </h2></span
         >
       </div>

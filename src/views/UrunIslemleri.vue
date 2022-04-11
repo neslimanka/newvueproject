@@ -86,15 +86,17 @@
     </label>
     <div class="flex justify-start mt-3 ml-4 mb-4">
       <button
+        type="button"
         class="
           bg-blue-500
-          hover:bg-blue-400
           text-white
           font-semibold
           py-2
           px-6
           rounded
+          disabled:opacity-25
         "
+        :disabled="isDisabled"
         @click="saveProduct"
       >
         Kaydet
@@ -113,11 +115,47 @@ export default {
         price: null,
         description: "",
       },
+      saveButtonClicked: false,
     };
   },
   methods: {
     saveProduct() {
       this.$store.dispatch("saveProduct", this.product);
+    },
+  },
+  computed: {
+    isDisabled() {
+      if (
+        this.product.title.length > 0 &&
+        this.product.count > 0 &&
+        this.product.price > 0 &&
+        this.product.description.length > 0
+      ) {
+        return false;
+      } else {
+        return true;
+      }
+    },
+    beforeRouteLeave(to, from, next) {
+      if (
+        (this.product.title.length > 0 ||
+          this.product.count > 0 ||
+          this.product.price > 0 ||
+          this.product.description.length > 0) &&
+        !this.saveButtonClicked
+      ) {
+        if (
+          alert(
+            "Kaydedilmemiş değişiklikler var. Yine de çıkmak istiyor musunuz?"
+          )
+        ) {
+          next();
+        } else {
+          next(false);
+        }
+      } else {
+        next();
+      }
     },
   },
 };

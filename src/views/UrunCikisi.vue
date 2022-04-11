@@ -17,8 +17,13 @@
           focus:ring-1 focus:outline-none
         "
       >
-        <option disabled selected>Normal</option>
-        <option>Normal Apple</option>
+        <option
+          v-for="product in getProducts"
+          :key="product.key"
+          :value="product.key"
+        >
+          {{ product.title }}
+        </option>
       </select>
     </label>
     <div
@@ -31,11 +36,11 @@
       "
     >
       <div class="flex flex-row justify-around">
-        <span class="bg-green-500 rounded-md">Stok:</span>
-        <span class="bg-blue-600 rounded-md">Fiyat:</span>
+        <span class="bg-green-500 rounded-md">Stok:{{ product.count }}</span>
+        <span class="bg-blue-600 rounded-md">Fiyat: {{ product.price }}</span>
       </div>
       <div class="flex flex-col w-4/5 m-auto my-2 border border-yellow-500">
-        Ürün hakkında açıklama
+        <p>{{ product.description }}</p>
       </div>
     </div>
     <label class="flex flex-col">
@@ -76,7 +81,14 @@
   </div>
 </template>
 <script>
+import { mapGetters } from "vuex";
 export default {
   name: "appUrunCikisi",
+  computed: {
+    ...mapGetters(["getProducts"]),
+  },
+  created() {
+    console.log(this.getProducts);
+  },
 };
 </script>
