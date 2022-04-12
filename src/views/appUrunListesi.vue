@@ -63,10 +63,6 @@ import { mapGetters } from "vuex";
 
 export default {
   name: "appUrunListesi",
-  created() {
-    this.$store.dispatch("setTradeResult");
-    console.log(this.$store.dispatch("setTradeResult"));
-  },
   computed: {
     ...mapGetters(["getProducts"]),
   },

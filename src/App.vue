@@ -1,13 +1,15 @@
 <template>
   <div id="app">
     <app-navbar></app-navbar>
-    <router-view />
+    <transition name="fade" mode="out-in">
+      <router-view />
+    </transition>
     <app-footer></app-footer>
   </div>
 </template>
  <script>
-import appNavbar from "./components/Navbar.vue";
-import appFooter from "./components/Footer.vue";
+import appNavbar from "./components/appNavbar.vue";
+import appFooter from "./components/appFooter.vue";
 
 export default {
   name: "App",
@@ -29,5 +31,17 @@ export default {
 }
 nav a.router-link-exact-active {
   color: #42b983;
+}
+.fade-enter {
+  opacity: 0;
+}
+.fade-enter-active {
+  transition: opacity 0.3s ease-out;
+}
+.fade-leave {
+}
+.fade-leave-active {
+  transition: opacity.3s ease-out;
+  opacity: 0;
 }
 </style>

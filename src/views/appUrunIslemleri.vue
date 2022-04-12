@@ -96,7 +96,7 @@
           rounded
           disabled:opacity-25
         "
-        :disabled="isDisabled"
+        :disabled="saveEnabled"
         @click="saveProduct"
       >
         Kaydet
@@ -120,11 +120,12 @@ export default {
   },
   methods: {
     saveProduct() {
+      this.saveButtonClicked = true;
       this.$store.dispatch("saveProduct", this.product);
     },
   },
   computed: {
-    isDisabled() {
+    saveEnabled() {
       if (
         this.product.title.length > 0 &&
         this.product.count > 0 &&
@@ -136,6 +137,17 @@ export default {
         return true;
       }
     },
+    isLoading() {
+      if (this.saveButtonClicked) {
+        return {
+          display: "block",
+        };
+      } else {
+        return {
+          display: "none",
+        };
+      }
+    },
     beforeRouteLeave(to, from, next) {
       if (
         (this.product.title.length > 0 ||
@@ -145,7 +157,7 @@ export default {
         !this.saveButtonClicked
       ) {
         if (
-          alert(
+          confirm(
             "Kaydedilmemiş değişiklikler var. Yine de çıkmak istiyor musunuz?"
           )
         ) {

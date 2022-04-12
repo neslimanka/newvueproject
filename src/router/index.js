@@ -1,8 +1,8 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import appUrunListesi from '../views/UrunListesi.vue'
-import appUrunIslemleri from '../views/UrunIslemleri.vue'
-import appUrunCikisi from '../views/UrunCikisi'
+import appUrunListesi from '../views/appUrunListesi.vue'
+import appUrunIslemleri from '../views/appUrunIslemleri.vue'
+import appUrunCikisi from '../views/appUrunCikisi'
 
 
 Vue.use(VueRouter)
@@ -27,7 +27,8 @@ const routes = [
     path: '/urun-cikisi',
     name: 'urun-cikisi',
     component: appUrunCikisi
-  }
+  },
+  
 ]
 
 const router = new VueRouter({
