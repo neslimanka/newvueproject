@@ -18,4 +18,4 @@ npm run build
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
 
-## Click to see the project[](https://newvueproject-ffrxrn8dx-neslimanka.vercel.app/urun-listesi)
+## Click to see the project[Click](https://newvueproject-ffrxrn8dx-neslimanka.vercel.app/urun-listesi)
